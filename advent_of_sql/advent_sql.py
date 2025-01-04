@@ -38,7 +38,10 @@ def run_answer(answer_file_path: str, db_path: str):
     with open(answer_file_path) as f:
         answer_sql = f.read()
     print("Answer:")
-    conn.sql(answer_sql).show()
+    df = conn.sql(answer_sql)
+    for row in df.fetchall():
+        print(",".join(str(x) for x in row))  # Join values with commas
+
     conn.close()
 
 

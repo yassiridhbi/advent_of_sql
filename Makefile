@@ -10,6 +10,6 @@ db:
 ifndef day
 	$(error day is not set. Usage: make db day=01)
 endif
-	duckdb advent_day_$(day).duckdb
+	duckdb -readonly advent_day_$(day).duckdb
 
 .PHONY: run db
