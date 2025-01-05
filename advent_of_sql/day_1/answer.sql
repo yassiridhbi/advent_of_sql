@@ -3,7 +3,7 @@ select
     w.wishes ->> '$.first_choice' as primary_wish,
     w.wishes ->> '$.second_choice' as backup_wish,
     w.wishes ->> '$.colors[0]' as favorite_color,
-    len(w.wishes.colors) as color_count,
+json_array_length(w.wishes.colors) as color_count,
     case
         when t.difficulty_to_make = 1 then 'Simple Gift'
         when t.difficulty_to_make = 2 then 'Moderate Gift'
